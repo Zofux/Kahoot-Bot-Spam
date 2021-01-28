@@ -10,7 +10,7 @@ let bot_name = `${random.first()}`
 
 const randomOrNot = prompt('Should I use a random name? ')
 if (randomOrNot.toLowerCase() === 'yes') {
-    console.log('Names are ranmdom')
+    console.log('Names will be random')
 }
 
 if (randomOrNot.toLowerCase() === 'no') {
