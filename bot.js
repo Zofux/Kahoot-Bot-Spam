@@ -39,12 +39,6 @@ for (var i = 0; i < bot_count; i++) {
         console.log("Could not join because : " + error.description + " " + error.status)
     }) 
 
-    client[i].joinTeam(pin, name, [
-        `${bot_name}1`,
-        `${bot_name}2`,
-        `${bot_name}3`,
-        `${bot_name}4`
-    ])
 
     client[i].on("Joined", () => {
         console.log("A bot successfully joined game")
