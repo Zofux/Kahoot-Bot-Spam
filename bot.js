@@ -27,26 +27,26 @@ if (isNaN(botCount)) return console.log('Bot Count needs to be a number')
 console.log(`Sending ${botCount} bots!`)
 
 
-var kahoots = [];
+var client = [];
 var pin = `${pinInput}`;
 var name = `${bot_name}`;
 var bot_count = `${botCount}`;
 for (var i = 0; i < bot_count; i++) {
-    kahoots.push(new Kahoot);
-    kahoots[i].join(pin, name + " " + String(i)).catch(error => {
+    client.push(new Kahoot);
+    client[i].join(pin, name + " " + String(i)).catch(error => {
         console.log("Could not join because : " + error.description + " " + error.status)
     });
-    kahoots[i].on("Joined", () => {
+    client[i].on("Joined", () => {
         console.log("A bot successfully joined game")
     });
-    kahoots[i].on("QuestionStart", (question) => {
+    client[i].on("QuestionStart", (question) => {
         question.answer(
             Math.floor(
                 Math.random() * question.quizQuestionAnswers[question.questionIndex]
             ) + 0
         );
     });
-    kahoots[i].on("Disconnect", (reason) => {
+    client[i].on("Disconnect", (reason) => {
         console.log("A bot left because " + reason);
     });
 }
