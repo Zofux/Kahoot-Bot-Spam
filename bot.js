@@ -39,7 +39,6 @@ for (var i = 0; i < bot_count; i++) {
         console.log("Could not join because : " + error.description + " " + error.status)
     }) 
 
-
     client[i].on("Joined", () => {
         console.log("A bot successfully joined game")
     });
