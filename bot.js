@@ -17,7 +17,7 @@ if (randomOrNot.toLowerCase() === 'no') {
     const botName = prompt('Bot Name : ')
     console.log(`Bot name set to "${botName}"`)
     bot_name = `${botName}`    
-} else if (randomOrNot != 'no' && randomOrNot != 'yes') {
+} else if (randomOrNot.toLowerCase() != 'no' && randomOrNot.toLowerCase() != 'yes') {
     console.log('The only options are "yes" or "no"')
     return
 }
@@ -33,9 +33,19 @@ var name = `${bot_name}`;
 var bot_count = `${botCount}`;
 for (var i = 0; i < bot_count; i++) {
     client.push(new Kahoot);
+
+
     client[i].join(pin, name + " " + String(i)).catch(error => {
         console.log("Could not join because : " + error.description + " " + error.status)
-    });
+    }) 
+
+    client[i].joinTeam(pin, name, [
+        `${bot_name}1`,
+        `${bot_name}2`,
+        `${bot_name}3`,
+        `${bot_name}4`
+    ])
+
     client[i].on("Joined", () => {
         console.log("A bot successfully joined game")
     });
